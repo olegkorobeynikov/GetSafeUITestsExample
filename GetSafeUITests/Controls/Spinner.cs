@@ -1,7 +1,7 @@
 ﻿using System;
+using GetSafeUITests.Infrastructure.Extension;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using GetSafeUITests.Infrastructure.Extension;
 
 namespace GetSafeUITests.Controls
 {

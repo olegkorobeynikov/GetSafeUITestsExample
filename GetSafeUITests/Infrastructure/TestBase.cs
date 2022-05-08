@@ -27,7 +27,7 @@ namespace GetSafeUITests.Infrastructure
         [SetUp]
         public void SetUp()
         {
-            Driver = BrowserFactory.TryCreateWebDriver(Log, TestSettings.WebDriverType);
+            Driver = BrowserFactory.TryCreateWebDriver(Log);
 
             Driver.Navigate().GoToUrl(UrlConstant.StartHelloGetSafe);
             Driver.Manage().Cookies.AddCookie(new Cookie("OptanonAlertBoxClosed", domain: ".hellogetsafe.com",

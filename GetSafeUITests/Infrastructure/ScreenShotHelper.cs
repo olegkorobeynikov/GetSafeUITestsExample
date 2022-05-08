@@ -5,7 +5,7 @@ using OpenQA.Selenium;
 
 namespace GetSafeUITests.Infrastructure
 {
-    public class ScreenShotHelper
+    public static class ScreenShotHelper
     {
         private const string pngSuf = ".png";
 

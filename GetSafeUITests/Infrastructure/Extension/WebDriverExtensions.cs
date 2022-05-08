@@ -26,6 +26,7 @@ namespace GetSafeUITests.Infrastructure.Extension
 
             return driver.FindElement(by);
         }
+
         public static void ShouldUrlContain(this IWebDriver driver, string expectedValue, string message = null) =>
             driver.Url.Should().Contain(expectedValue, message);
     }
