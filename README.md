@@ -1,3 +1,3 @@
 # GetSafeUITestsExample
 
-UI test example without webdriver wrappers. 
+UI test example without ready-made webdriver wrappers. 
