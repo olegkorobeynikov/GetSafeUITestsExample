@@ -1,6 +1,6 @@
-﻿using OpenQA.Selenium;
-using GetSafeUITests.Infrastructure;
+﻿using GetSafeUITests.Infrastructure;
 using GetSafeUITests.Infrastructure.Extension;
+using OpenQA.Selenium;
 
 namespace GetSafeUITests.Pages.Liability
 {

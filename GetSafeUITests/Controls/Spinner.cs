@@ -1,5 +1,4 @@
 ﻿using System;
-using GetSafeUITests.Infrastructure.Extension;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
@@ -7,18 +6,13 @@ namespace GetSafeUITests.Controls
 {
     public class Spinner
     {
+        private readonly By By;
         private readonly IWebDriver Driver;
-        private readonly By Selector;
 
         public Spinner(IWebDriver driver, By by)
         {
             Driver = driver;
-            Selector = by;
-        }
-
-        public IWebElement Element()
-        {
-            return Driver.TryFindElement(Selector);
+            By = by;
         }
 
         public void WaitWhileLoading(int timeoutInSeconds = 10)
@@ -30,7 +24,7 @@ namespace GetSafeUITests.Controls
                 {
                     try
                     {
-                        return !Driver.FindElement(Selector).Displayed;
+                        return !Driver.FindElement(By).Displayed;
                     }
                     catch (StaleElementReferenceException)
                     {

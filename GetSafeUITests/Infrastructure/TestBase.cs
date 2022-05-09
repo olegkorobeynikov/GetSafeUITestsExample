@@ -8,11 +8,11 @@ using OpenQA.Selenium;
 
 namespace GetSafeUITests.Infrastructure
 {
-    [FixtureLifeCycleAttribute(LifeCycle.InstancePerTestCase)]
+    [FixtureLifeCycle(LifeCycle.InstancePerTestCase)]
     public class TestBase
     {
-        public static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod()?.DeclaringType);
-        public IWebDriver Driver;
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod()?.DeclaringType);
+        internal IWebDriver Driver;
 
         [OneTimeSetUp]
         public static void OneTimeSetUp()
@@ -28,7 +28,11 @@ namespace GetSafeUITests.Infrastructure
         public void SetUp()
         {
             Driver = BrowserFactory.TryCreateWebDriver(Log);
+            AcceptCookie();
+        }
 
+        private void AcceptCookie()
+        {
             Driver.Navigate().GoToUrl(UrlConstant.StartHelloGetSafe);
             Driver.Manage().Cookies.AddCookie(new Cookie("OptanonAlertBoxClosed", domain: ".hellogetsafe.com",
                 value: DateTime.Now.AddHours(-1).ToLongDateString(), path: "/", expiry: DateTime.Now.AddDays(1)));
@@ -40,10 +44,11 @@ namespace GetSafeUITests.Infrastructure
             if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
             {
                 SaveScreenShot();
-                var logStr = $"Test {TestContext.CurrentContext.Test.Name} Failed, because: {TestContext.CurrentContext.Result.Message}";
+                var logStr =
+                    $"Test {TestContext.CurrentContext.Test.Name} Failed, because: {TestContext.CurrentContext.Result.Message}";
                 Log.Warn(logStr);
             }
-                
+
             Driver.Dispose();
         }
 

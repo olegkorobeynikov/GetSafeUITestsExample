@@ -1,14 +1,14 @@
-﻿using OpenQA.Selenium;
-using GetSafeUITests.Infrastructure;
+﻿using GetSafeUITests.Infrastructure;
 using GetSafeUITests.Infrastructure.Extension;
 using GetSafeUITests.Pages.Liability.PageFragments;
+using OpenQA.Selenium;
 
 namespace GetSafeUITests.Pages.Liability
 {
     public class FamilyPage : Page
     {
+        private const string StepContainerId = "#step_liability_family";
         public static string Url = UrlConstant.Liability.Family;
-        private readonly string stepContainerId = "#step_liability_family";
 
         public FamilyPage(IWebDriver driver) : base(driver)
         {
@@ -18,9 +18,9 @@ namespace GetSafeUITests.Pages.Liability
         public Footer Footer { get; }
 
         public IWebElement OnlyMeButton =>
-            Driver.TryFindElement(By.CssSelector($"{stepContainerId} #select-list-button-false"));
+            Driver.TryFindElement(By.CssSelector($"{StepContainerId} #select-list-button-false"));
 
         public IWebElement MyFamilyButton =>
-            Driver.TryFindElement(By.CssSelector($"{stepContainerId} #select-list-button-true"));
+            Driver.TryFindElement(By.CssSelector($"{StepContainerId} #select-list-button-true"));
     }
 }
